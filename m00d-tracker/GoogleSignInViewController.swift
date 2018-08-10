@@ -11,7 +11,7 @@ import GoogleSignIn
 import GoogleAPIClientForREST
 
 class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
-
+    
     let service = GTLRSheetsService()
 
     override func viewDidLoad() {
@@ -44,22 +44,6 @@ class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func writeToSpreadsheet() {
-        // eventually this will be dynamic
-        let spreadsheetId = "1seWeHbq5MahbGNjzoxyKORr4Ib8xDoJFEPxVC-GhfF4"
-        let sheetRange = "A1"
-        let sheetValues = GTLRSheets_ValueRange()
-        sheetValues.values = [["meggyG"]]
-        let sheetsQuery = GTLRSheetsQuery_SpreadsheetsValuesUpdate.query(withObject: sheetValues, spreadsheetId: spreadsheetId, range: sheetRange)
-        sheetsQuery.valueInputOption = "USER_ENTERED"
-        service.executeQuery(sheetsQuery, completionHandler: {(handler) in
-            if let error = handler.2 {
-                print("We at a Error: \(error.localizedDescription)")
-                return
-            }
-        })
-    }
-    
     // MARK: - GIDSignInDelegate
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
@@ -68,7 +52,9 @@ class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             print("\(error.localizedDescription)")
         } else {
             service.authorizer = user.authentication.fetcherAuthorizer()
-            writeToSpreadsheet()
+            let sheetID = "1seWeHbq5MahbGNjzoxyKORr4Ib8xDoJFEPxVC-GhfF4"
+            let sheetController = GoogleSheetController(service: service, sheetID: sheetID)
+            sheetController.writeToSpreadsheet(range: "A1", values: [["let these mothafuckas feel the MOVE MINT"]])
         }
     }
     
