@@ -10,4 +10,8 @@
 
 #import "Config.h"
 
+// argh
+#import <GTMSessionFetcher/GTMSessionFetcher.h>
+#import <GTMSessionFetcher/GTMSessionFetcherService.h>
+
 #endif /* Bridging_Header_h */

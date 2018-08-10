@@ -6,6 +6,6 @@ target 'm00d-tracker' do
   use_frameworks!
 
   # Pods for m00d-tracker
-  pod 'GoogleAPIClientForREST/Sheets', '~> 1.2.1'
+  pod 'GoogleAPIClientForREST/Sheets', '~> 1.3.5'
   pod 'GoogleSignIn', '~> 4.1.1'
 end

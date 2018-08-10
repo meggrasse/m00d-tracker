@@ -67,7 +67,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         }
         
         let rows = result.values!
-        
+
         if rows.isEmpty {
             print("No data found.")
             return

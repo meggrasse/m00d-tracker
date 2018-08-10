@@ -11,6 +11,7 @@
 import UIKit
 // how would I have known this import name w/o documentation
 import GoogleSignIn
+import GoogleAPIClientForREST
 //import GoogleAPIClientForREST/Sheets
 
 @UIApplicationMain
