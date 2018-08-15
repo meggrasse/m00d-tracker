@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8B8CCC3A87E5EB955DDD48BB /* Pods_m00d_tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 805B9B01B6D8D49A36FA2B7B /* Pods_m00d_tracker.framework */; };
 		94295720211E19BC00619361 /* GoogleSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9429571F211E19BC00619361 /* GoogleSheetController.swift */; };
+		94295722212213E700619361 /* DailyReflectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94295721212213E700619361 /* DailyReflectionViewController.swift */; };
 		949E124D211CEC02004C7A1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949E124C211CEC02004C7A1A /* AppDelegate.swift */; };
 		949E124F211CEC02004C7A1A /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949E124E211CEC02004C7A1A /* GoogleSignInViewController.swift */; };
 		949E1252211CEC02004C7A1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 949E1250211CEC02004C7A1A /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 		75CF2885E480B360A82DB412 /* Pods-m00d-tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-m00d-tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-m00d-tracker/Pods-m00d-tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		805B9B01B6D8D49A36FA2B7B /* Pods_m00d_tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_m00d_tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9429571F211E19BC00619361 /* GoogleSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleSheetController.swift; path = "/Users/meg/code/ios/m00d-tracker/m00d-tracker/GoogleSheetController.swift"; sourceTree = "<absolute>"; };
+		94295721212213E700619361 /* DailyReflectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyReflectionViewController.swift; sourceTree = "<group>"; };
 		949E1249211CEC02004C7A1A /* m00d-tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "m00d-tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		949E124C211CEC02004C7A1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		949E124E211CEC02004C7A1A /* GoogleSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				9429571F211E19BC00619361 /* GoogleSheetController.swift */,
 				949E124C211CEC02004C7A1A /* AppDelegate.swift */,
 				949E124E211CEC02004C7A1A /* GoogleSignInViewController.swift */,
+				94295721212213E700619361 /* DailyReflectionViewController.swift */,
 				949E1250211CEC02004C7A1A /* Main.storyboard */,
 				949E1253211CEC03004C7A1A /* Assets.xcassets */,
 				949E1255211CEC03004C7A1A /* LaunchScreen.storyboard */,
@@ -235,6 +238,7 @@
 				949E124F211CEC02004C7A1A /* GoogleSignInViewController.swift in Sources */,
 				949E124D211CEC02004C7A1A /* AppDelegate.swift in Sources */,
 				94295720211E19BC00619361 /* GoogleSheetController.swift in Sources */,
+				94295722212213E700619361 /* DailyReflectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

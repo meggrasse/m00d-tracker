@@ -11,8 +11,6 @@ import GoogleSignIn
 import GoogleAPIClientForREST
 
 class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
-    
-    let service = GTLRSheetsService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,10 +49,14 @@ class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         if let error = error {
             print("\(error.localizedDescription)")
         } else {
+            let service = GTLRSheetsService()
             service.authorizer = user.authentication.fetcherAuthorizer()
+            // eventually we want this to be dynamic
             let sheetID = "1seWeHbq5MahbGNjzoxyKORr4Ib8xDoJFEPxVC-GhfF4"
             let sheetController = GoogleSheetController(service: service, sheetID: sheetID)
-            sheetController.writeToSpreadsheet(range: "A1", values: [["let these mothafuckas feel the MOVE MINT"]])
+//            sheetController.writeToSpreadsheet(range: "A1", values: [["let these mothafuckas feel the MOVE MINT"]])
+            let nextVC = DailyReflectionViewController(sheetController: sheetController)
+            self.present(nextVC, animated: true, completion: nil)
         }
     }
     
