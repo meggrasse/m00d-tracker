@@ -33,7 +33,7 @@ class DailyReflectionViewController: UIViewController {
         
         let dateLabel = UILabel()
         dateLabel.text = formatter.string(from: date)
-        dateLabel.font = UIFont.systemFont(ofSize: 36)
+        dateLabel.font = UIFont.systemFont(ofSize: 40)
         dateLabel.textAlignment = .center
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(dateLabel)
@@ -41,7 +41,7 @@ class DailyReflectionViewController: UIViewController {
         var constraints = [
             dateLabel.leftAnchor.constraint(equalTo: view.leftAnchor),
             dateLabel.rightAnchor.constraint(equalTo: view.rightAnchor),
-            dateLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20)
+            dateLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80)
         ]
         
         // TODO: make this read dataa
