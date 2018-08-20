@@ -24,12 +24,12 @@ class GoogleSheetController: NSObject {
         if let sheetID = spreadsheetID, let service = sheetsService {
             let sheetsQuery = GTLRSheetsQuery_SpreadsheetsValuesUpdate.query(withObject: sheetValues, spreadsheetId: sheetID, range: range)
             sheetsQuery.valueInputOption = "USER_ENTERED"
-            service.executeQuery(sheetsQuery, completionHandler: {(handler) in
-                if let error = handler.2 {
+            service.executeQuery(sheetsQuery, completionHandler: { (ticket: GTLRServiceTicket, result: Any?, error: Error?) in
+                if let error = error {
                     print("We at a Error: \(error.localizedDescription)")
                     return
                 }
-            })
+            } )
         } else {
             print("Something not configured correctly.")
         }
