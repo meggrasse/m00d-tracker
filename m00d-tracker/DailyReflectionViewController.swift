@@ -12,10 +12,12 @@ class DailyReflectionViewController: UIViewController {
     
     let sheetController : GoogleSheetController
     var toggles : [UISwitch]
+    var currDate : String
     
     init(sheetController: GoogleSheetController) {
         self.sheetController = sheetController
         self.toggles = []
+        self.currDate = "COULDN'T ACCESS DATE"
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -60,10 +62,14 @@ class DailyReflectionViewController: UIViewController {
     func layoutDateLabel() -> [NSLayoutConstraint] {
         let date = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd/yyyy"
+        // TODO: make it a subtitle eventually
+        formatter.dateFormat = "MM/dd/yyyy - HH:mm"
         
         let dateLabel = UILabel()
-        dateLabel.text = formatter.string(from: date)
+        let dateString = formatter.string(from: date)
+        dateLabel.text = dateString
+        currDate = dateString
+        
         dateLabel.font = UIFont.systemFont(ofSize: 40)
         dateLabel.textAlignment = .center
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -117,7 +123,7 @@ class DailyReflectionViewController: UIViewController {
                 let range = "Sheet1!" + columnID + "1:" + columnID
                 
                 // Capture data and send it to sheet - (in case user doesn't fill out mood)
-                var values = ["TODO"]
+                var values = [self.currDate]
                 values += self.toggles.map { $0.isOn ? "X" : "" }
                 self.sheetController.writeToSpreadsheetColumn(range: range, values: values)
                 

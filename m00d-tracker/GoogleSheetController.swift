@@ -50,11 +50,10 @@ class GoogleSheetController: NSObject {
                     print("We at an error")
                     return
                 }
-                if let firstRowVals = queryResult.values?[0] as [Any]? {
-                    let blankColumnIndex = firstRowVals.count + 1
-                    if let asciiInt = UnicodeScalar(blankColumnIndex + 65) {
-                        completion(String(asciiInt))
-                    }
+                let entryCount = queryResult.values?[0].count ?? 0
+                let blankColumnIndex = entryCount + 1
+                if let asciiInt = UnicodeScalar(blankColumnIndex + 65) {
+                    completion(String(asciiInt))
                 }
             })
         } else {
