@@ -27,6 +27,33 @@ class DailyReflectionViewController: UIViewController {
         
         view.backgroundColor = UIColor.white
         
+        var constraints: [NSLayoutConstraint] = []
+        
+        let dateLabelContstraints = layoutDateLabel()
+        constraints += dateLabelContstraints
+        
+        // TODO: make this read data
+        let emojiToggleConstraints = self.layoutEmojiToggles(emojiToggleList: ["🌿", "👟", "🧘🏻‍♀️"])
+        constraints += emojiToggleConstraints
+        
+        let doneButton = UIButton(type: UIButton.ButtonType.system)
+        doneButton.setTitle("Done", for: UIControl.State.normal)
+        doneButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(doneButton)
+        
+        let doneButtonConstraints = [
+            doneButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            doneButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100)
+        ]
+        
+        constraints += doneButtonConstraints
+        
+        NSLayoutConstraint.activate(constraints)
+
+        // Do any additional setup after loading the view.
+    }
+    
+    func layoutDateLabel() -> [NSLayoutConstraint] {
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
@@ -38,25 +65,20 @@ class DailyReflectionViewController: UIViewController {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(dateLabel)
         
-        var constraints = [
+        let constraints = [
             dateLabel.leftAnchor.constraint(equalTo: view.leftAnchor),
             dateLabel.rightAnchor.constraint(equalTo: view.rightAnchor),
-            dateLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80)
+            dateLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100)
         ]
         
-        // TODO: make this read dataa
-        let newConstraints = self.layoutEmojiToggles(emojiToggleList: ["🌿", "👟", "🧘🏻‍♀️"])
-        constraints += newConstraints
-        
-        NSLayoutConstraint.activate(constraints)
-
-        // Do any additional setup after loading the view.
+        return constraints
     }
     
     func layoutEmojiToggles(emojiToggleList : [String]) -> [NSLayoutConstraint] {
         var constraints: [NSLayoutConstraint] = []
         
         // create each UI object
+        // TODO: extend for more than 5 items
         for i in 0..<emojiToggleList.count {
             let emojiLabel = UILabel()
             emojiLabel.text = emojiToggleList[i]
@@ -67,7 +89,6 @@ class DailyReflectionViewController: UIViewController {
             toggle.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(toggle)
         
-            // TODO: extend for more than 5 items
             // y position - index determines height
             let yConstant = (CGFloat(i) - 2) * 50
             constraints.append(emojiLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: yConstant))
