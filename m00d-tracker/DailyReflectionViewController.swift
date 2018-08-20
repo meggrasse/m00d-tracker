@@ -38,15 +38,47 @@ class DailyReflectionViewController: UIViewController {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(dateLabel)
         
-        let constraints = [
+        var constraints = [
             dateLabel.leftAnchor.constraint(equalTo: view.leftAnchor),
             dateLabel.rightAnchor.constraint(equalTo: view.rightAnchor),
             dateLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20)
         ]
         
+        // TODO: make this read dataa
+        let newConstraints = self.layoutEmojiToggles(emojiToggleList: ["🌿", "👟", "🧘🏻‍♀️"])
+        constraints += newConstraints
+        
         NSLayoutConstraint.activate(constraints)
 
         // Do any additional setup after loading the view.
+    }
+    
+    func layoutEmojiToggles(emojiToggleList : [String]) -> [NSLayoutConstraint] {
+        var constraints: [NSLayoutConstraint] = []
+        
+        // create each UI object
+        for i in 0..<emojiToggleList.count {
+            let emojiLabel = UILabel()
+            emojiLabel.text = emojiToggleList[i]
+            emojiLabel.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(emojiLabel)
+            
+            let toggle = UISwitch()
+            toggle.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(toggle)
+        
+            // TODO: extend for more than 5 items
+            // y position - index determines height
+            let yConstant = (CGFloat(i) - 2) * 50
+            constraints.append(emojiLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: yConstant))
+            constraints.append(toggle.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: yConstant))
+            
+            // x position
+            constraints.append(emojiLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -30.0))
+            constraints.append(toggle.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 30.0))
+        }
+        
+        return constraints
     }
     
 
