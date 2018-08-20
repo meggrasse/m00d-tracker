@@ -15,6 +15,7 @@
 		949E1252211CEC02004C7A1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 949E1250211CEC02004C7A1A /* Main.storyboard */; };
 		949E1254211CEC03004C7A1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 949E1253211CEC03004C7A1A /* Assets.xcassets */; };
 		949E1257211CEC03004C7A1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 949E1255211CEC03004C7A1A /* LaunchScreen.storyboard */; };
+		94FD9158212B330A00B927ED /* DailyMoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FD9157212B330A00B927ED /* DailyMoodViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		949E1258211CEC03004C7A1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94E93898211D0F3300B89AE9 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		94E9389A211D101200B89AE9 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "/Users/meg/code/ios/m00d-tracker/Bridging-Header.h"; sourceTree = "<absolute>"; };
+		94FD9157212B330A00B927ED /* DailyMoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyMoodViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 		949E124B211CEC02004C7A1A /* m00d-tracker */ = {
 			isa = PBXGroup;
 			children = (
+				94FD9157212B330A00B927ED /* DailyMoodViewController.swift */,
 				9429571F211E19BC00619361 /* GoogleSheetController.swift */,
 				949E124C211CEC02004C7A1A /* AppDelegate.swift */,
 				949E124E211CEC02004C7A1A /* GoogleSignInViewController.swift */,
@@ -239,6 +242,7 @@
 				949E124D211CEC02004C7A1A /* AppDelegate.swift in Sources */,
 				94295720211E19BC00619361 /* GoogleSheetController.swift in Sources */,
 				94295722212213E700619361 /* DailyReflectionViewController.swift in Sources */,
+				94FD9158212B330A00B927ED /* DailyMoodViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

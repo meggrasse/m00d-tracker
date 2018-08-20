@@ -54,7 +54,6 @@ class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
             // eventually we want this to be dynamic
             let sheetID = "1seWeHbq5MahbGNjzoxyKORr4Ib8xDoJFEPxVC-GhfF4"
             let sheetController = GoogleSheetController(service: service, sheetID: sheetID)
-//            sheetController.writeToSpreadsheet(range: "A1", values: [["let these mothafuckas feel the MOVE MINT"]])
             let nextVC = DailyReflectionViewController(sheetController: sheetController)
             self.present(nextVC, animated: true, completion: nil)
         }

@@ -11,9 +11,11 @@ import UIKit
 class DailyReflectionViewController: UIViewController {
     
     let sheetController : GoogleSheetController
+    var toggles : [UISwitch]
     
     init(sheetController: GoogleSheetController) {
         self.sheetController = sheetController
+        self.toggles = []
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -33,12 +35,14 @@ class DailyReflectionViewController: UIViewController {
         constraints += dateLabelContstraints
         
         // TODO: make this read data
-        let emojiToggleConstraints = self.layoutEmojiToggles(emojiToggleList: ["🌿", "👟", "🧘🏻‍♀️"])
+        let emojis = ["🌿", "👟", "🧘🏻‍♀️"]
+        let emojiToggleConstraints = self.layoutEmojiToggles(emojiToggleList: emojis)
         constraints += emojiToggleConstraints
         
         let doneButton = UIButton(type: UIButton.ButtonType.system)
-        doneButton.setTitle("Done", for: UIControl.State.normal)
+        doneButton.setTitle("next", for: UIControl.State.normal)
         doneButton.translatesAutoresizingMaskIntoConstraints = false
+        doneButton.addTarget(self, action: #selector(doneButtonAction), for: UIControl.Event.touchUpInside)
         view.addSubview(doneButton)
         
         let doneButtonConstraints = [
@@ -87,6 +91,8 @@ class DailyReflectionViewController: UIViewController {
             
             let toggle = UISwitch()
             toggle.translatesAutoresizingMaskIntoConstraints = false
+            // Add to `toggles` member so we can read data from the UI element later
+            toggles.append(toggle)
             view.addSubview(toggle)
         
             // y position - index determines height
@@ -100,6 +106,30 @@ class DailyReflectionViewController: UIViewController {
         }
         
         return constraints
+    }
+    
+    @objc func doneButtonAction() {
+        
+        // this will dynamically choose a column letter
+        // maybe we'll be specific about range
+        sheetController.findFirstBlankColumn(completion: { (id) in
+            if let columnID = id {
+                let range = "Sheet1!" + columnID + "1:" + columnID
+                
+                // Capture data and send it to sheet - (in case user doesn't fill out mood)
+                var values = ["TODO"]
+                values += self.toggles.map { $0.isOn ? "X" : "" }
+                self.sheetController.writeToSpreadsheetColumn(range: range, values: values)
+                
+                // make sure we don't have async problems
+                // present a DailyMoodViewController
+                let nextVC = DailyMoodViewController()
+                self.present(nextVC, animated: true, completion: nil)
+            } else {
+                print("couldn't write to spreadsheet.")
+            }
+            
+        })
     }
     
 
