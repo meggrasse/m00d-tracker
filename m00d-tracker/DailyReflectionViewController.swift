@@ -29,32 +29,37 @@ class DailyReflectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // this is probably bad but hey I need the data
+        self.view.backgroundColor = UIColor.white
+        
+        var constraints: [NSLayoutConstraint] = []
+        
+        let dateLabelContstraints = self.layoutDateLabel()
+        constraints += dateLabelContstraints
+        
+        let doneButton = UIButton(type: UIButton.ButtonType.system)
+        doneButton.setTitle("next", for: UIControl.State.normal)
+        doneButton.translatesAutoresizingMaskIntoConstraints = false
+        doneButton.addTarget(self, action: #selector(self.doneButtonAction), for: UIControl.Event.touchUpInside)
+        self.view.addSubview(doneButton)
+        
+        let doneButtonConstraints = [
+            doneButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            doneButton.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -100)
+        ]
+        
+        constraints += doneButtonConstraints
+        
+        NSLayoutConstraint.activate(constraints)
+
+        // layout constraints twice since we're waiting on data
         sheetController.readEmojiRowTitles(completion: { (values) in
-            self.view.backgroundColor = UIColor.white
             
             var constraints: [NSLayoutConstraint] = []
-            
-            let dateLabelContstraints = self.layoutDateLabel()
-            constraints += dateLabelContstraints
             
             if let emojis = values {
                 let emojiToggleConstraints = self.layoutEmojiToggles(emojiToggleList: emojis)
                 constraints += emojiToggleConstraints
             }
-            
-            let doneButton = UIButton(type: UIButton.ButtonType.system)
-            doneButton.setTitle("next", for: UIControl.State.normal)
-            doneButton.translatesAutoresizingMaskIntoConstraints = false
-            doneButton.addTarget(self, action: #selector(self.doneButtonAction), for: UIControl.Event.touchUpInside)
-            self.view.addSubview(doneButton)
-            
-            let doneButtonConstraints = [
-                doneButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-                doneButton.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -100)
-            ]
-            
-            constraints += doneButtonConstraints
             
             NSLayoutConstraint.activate(constraints)
         })
